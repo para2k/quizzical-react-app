@@ -1,0 +1,127 @@
+* {
+  box-sizing: border-box;
+  font-family: "Karla", serif;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: #F5F7FB;
+}
+
+/* Opening Screen */
+
+.start-quiz-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.start-quiz-container h1 {
+  margin-bottom: 0;
+  font-size: 2rem;
+}
+
+.start-quiz-container p {
+  font-family: 'Inter', sans-serif;
+  margin: 1em 0;
+  font-size: 1rem;
+}
+
+/* Quiz styles */
+.form-container {
+  padding: 1em 0;
+}
+
+#trivia-form {
+  width: 80%;
+  margin: 0 auto;
+}
+.qa-block {
+  font-family: 'Inter', sans-serif;
+  border: none;
+  border-bottom: 1px solid #DBDEF0;
+  padding: .5em 0 1em 0;
+}
+
+.qa-block h2 {
+  font-size: 1rem;
+  font-weight: bold;
+  font-family: 'Karla', serif;
+}
+
+.btn-quiz {
+  margin-top: 1em;
+  border: none;
+  border-radius: 15px;
+  background-color: #4D5B9E;
+  padding: 1em 4em;
+  color: #F5F7FB;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.btn-quiz--small {
+  display: inline-block;
+  padding: 1em 2em;
+  font-size: .7rem;
+  font-weight: 600;
+  border-radius: 10px;
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+input[type="radio"]:checked + label.btn-option {
+  background-color: #D6DBF5;
+  border: none;
+}
+
+.btn-option {
+  text-align: center;
+  font-size: .7rem;
+  font-weight: 500;
+  display: inline-block;
+  padding: .3em 2em;
+  border-radius: 8px;
+  cursor: pointer;
+  border: 1px solid #4D5B9E;
+  margin-right: 1em;
+  margin-bottom: .5em;
+  min-width: 65px;
+}
+
+.btn-option:hover {
+  background-color: #D6DBF5;
+}
+
+.correct {
+  background-color: #94D7A2;
+}
+
+.incorrect {
+  background-color: #F8BCBC;
+}
+
+.opacity50 {
+  opacity: 0.5;
+}
+
+.score {
+  width: 100%;
+  margin: 1em 0;
+  display: inline-flex;
+  gap: 1em;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.score h3 {
+  font-size: .8rem;
+  font-weight: bold;
+  color: #293264;
+}
