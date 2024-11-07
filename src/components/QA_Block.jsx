@@ -1,5 +1,5 @@
 import {nanoid} from "nanoid"
-import { useState, useEffect } from "react";
+import { useState, useEffect, Fragment } from "react";
 
 export default function QA_Block({ question, incorrectAnswers, correctAnswer, questionIndex, onAnswerSelect, submitted, selectedAnswer }) {
 
@@ -48,9 +48,8 @@ export default function QA_Block({ question, incorrectAnswers, correctAnswer, qu
                     }
                 } 
                 return (
-                    <>
+                    <Fragment key={id}>
                         <input
-
                             type="radio"
                             id={id}
                             name={`question-${questionIndex}`}
@@ -59,7 +58,7 @@ export default function QA_Block({ question, incorrectAnswers, correctAnswer, qu
                             onChange={() => { onAnswerSelect(answer, questionIndex) }}
                         />
                         <label className={`btn-option ${labelClass}`} htmlFor={id}>{answer}</label>
-                    </>
+                    </Fragment>
 
                 )
             }

@@ -1,6 +1,7 @@
-import { useState} from 'react';
+import { useState } from 'react';
 import { decode } from 'html-entities';
 import QA_Block from './components/QA_Block';
+import QuizSetup from './components/QuizSetup';
 
 function App() {
 
@@ -11,11 +12,14 @@ function App() {
   const [startedGame, setStartedGame] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
 
+  async function fetchQuestions(categoryId, difficulty, numQuestions) {
 
-  async function fetchQuestions() {
+    const cat = categoryId ? `&category=${categoryId}` : ""
+    const diff = difficulty ? `&difficulty=${difficulty}` : ""
+
     setIsLoading(true)
     try {
-      const response = await fetch("https://opentdb.com/api.php?amount=5&type=multiple");
+      const response = await fetch(`https://opentdb.com/api.php?amount=${numQuestions}${cat}${diff}&type=multiple`);
       const data = await response.json();
       if (Array.isArray(data.results)) {
         setQuestionsArr(data.results.map(result => {
@@ -33,10 +37,6 @@ function App() {
     finally {
       setIsLoading(false)
     }
-  }
-
-  function startGame() {
-    fetchQuestions()
   }
 
   function checkAnswers(event) {
@@ -81,11 +81,9 @@ function App() {
     <>
       {
         !startedGame ?
-          <section className="start-quiz-container">
-            <h1>Quizzical</h1>
-            <p>Some description if needed</p>
-            <button onClick={startGame} className="btn-quiz">{isLoading? "Loading ..." : "Start quiz"}</button>
-          </section>
+          <QuizSetup 
+          isLoading = {isLoading}
+          startGame = {fetchQuestions}/>
           :
           <section className="form-container">
             <form id="trivia-form" onSubmit={checkAnswers}>
